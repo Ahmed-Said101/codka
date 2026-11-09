@@ -1,0 +1,139 @@
+{
+ "routes": [
+  {
+   "route": "/",
+   "axe": 0,
+   "overflow": -15,
+   "detail": []
+  },
+  {
+   "route": "/menu",
+   "axe": 0,
+   "overflow": -15,
+   "detail": []
+  },
+  {
+   "route": "/menu/cappuccino",
+   "axe": 0,
+   "overflow": -15,
+   "detail": []
+  },
+  {
+   "route": "/story",
+   "axe": 0,
+   "overflow": -15,
+   "detail": []
+  },
+  {
+   "route": "/rewards",
+   "axe": 0,
+   "overflow": -15,
+   "detail": []
+  },
+  {
+   "route": "/branches",
+   "axe": 0,
+   "overflow": -15,
+   "detail": []
+  },
+  {
+   "route": "/contact",
+   "axe": 0,
+   "overflow": -15,
+   "detail": []
+  },
+  {
+   "route": "/cart",
+   "axe": 0,
+   "overflow": -15,
+   "detail": []
+  },
+  {
+   "route": "/nope-404",
+   "axe": 0,
+   "overflow": -15,
+   "detail": []
+  },
+  {
+   "route": "MOBILE /",
+   "axe": 0,
+   "overflow": 0,
+   "detail": []
+  },
+  {
+   "route": "MOBILE /menu",
+   "axe": 0,
+   "overflow": 0,
+   "detail": []
+  },
+  {
+   "route": "MOBILE /menu/cappuccino",
+   "axe": 0,
+   "overflow": 0,
+   "detail": []
+  },
+  {
+   "route": "MOBILE /story",
+   "axe": 0,
+   "overflow": 0,
+   "detail": []
+  },
+  {
+   "route": "MOBILE /rewards",
+   "axe": 0,
+   "overflow": 0,
+   "detail": []
+  },
+  {
+   "route": "MOBILE /branches",
+   "axe": 0,
+   "overflow": 0,
+   "detail": []
+  },
+  {
+   "route": "MOBILE /contact",
+   "axe": 0,
+   "overflow": 0,
+   "detail": []
+  },
+  {
+   "route": "MOBILE /cart",
+   "axe": 0,
+   "overflow": 0,
+   "detail": []
+  },
+  {
+   "route": "MOBILE /nope-404",
+   "axe": 0,
+   "overflow": 0,
+   "detail": []
+  }
+ ],
+ "flow": {
+  "searchResults": 12,
+  "badge": "2",
+  "linesOnCart": 2,
+  "code": "SL-9899",
+  "confirmText": "Thanks, Amina — your cup is queued.",
+  "emptyState": 1,
+  "priceAfterSize": "$2.45",
+  "badgeAfter": "1",
+  "afterReload": 1,
+  "reloadedBadge": "1",
+  "popcorn": "Popcorn latte",
+  "dialogClosed": true
+ },
+ "video": {
+  "autoplay": {
+   "paused": false,
+   "t": 2.63,
+   "ready": 4,
+   "cls": "is-ready"
+  },
+  "reduced": {
+   "paused": true,
+   "opacity": "0"
+  }
+ },
+ "errors": []
+}

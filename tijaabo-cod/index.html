@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dhageysi: codka Soomaaliga (Eleven v4)</title>
+<style>
+  :root { --bg:#100e0b; --card:#1b1813; --line:#2e2a22; --ink:#f3ece0; --dim:#a89b85; --gold:#d8b46a; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:28px 18px 60px; background:var(--bg); color:var(--ink);
+         font:16px/1.55 system-ui,"Segoe UI",Tahoma,sans-serif; }
+  .wrap { max-width:760px; margin:0 auto; }
+  h1 { font-size:24px; margin:0 0 6px; }
+  .sub { color:var(--dim); margin:0 0 22px; font-size:14px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px;
+          padding:16px; margin-bottom:14px; display:flex; gap:14px; align-items:center; }
+  .play { flex:0 0 auto; width:56px; height:56px; border-radius:50%; border:0;
+          background:var(--gold); color:#1a1509; font-size:22px; cursor:pointer; }
+  .play:active { transform:scale(.94); }
+  .card.on .play { box-shadow:0 0 0 4px rgba(216,180,106,.28); }
+  .meta { flex:1 1 auto; min-width:0; }
+  .name { font-size:18px; font-weight:600; }
+  .kind { color:var(--gold); font-size:13px; }
+  .id { color:var(--dim); font-size:12px; font-family:ui-monospace,Consolas,monospace;
+        word-break:break-all; margin-top:3px; }
+  .pick { margin-top:6px; background:transparent; border:1px solid var(--line);
+          color:var(--dim); border-radius:9px; padding:7px 11px; font-size:13px; cursor:pointer; }
+  .card.won { border-color:var(--gold); }
+  .card.won .pick { background:var(--gold); color:#1a1509; border-color:var(--gold); font-weight:600; }
+  .bar { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
+  .chip { border:1px solid var(--line); background:#161310; color:var(--ink);
+          border-radius:999px; padding:8px 14px; font-size:13px; cursor:pointer; }
+  .txt { width:100%; border:1px solid var(--line); border-radius:10px; background:#161310;
+         color:var(--ink); padding:10px 12px; font-size:15px; }
+  .note { color:var(--dim); font-size:13px; margin-top:18px; border-top:1px solid var(--line); padding-top:14px; }
+  .note a { color:var(--gold); }
+  code { background:#161310; padding:1px 5px; border-radius:5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Dhageysi: Soomaali iyo Ingiriis (Eleven Labs v4)</h1>
+  <p class="sub">Labada luqadoodba <code>eleven_v4</code> ayaa ka hadlaa — Ingriisku hadda browser TTS robot ah ma aha. Riix luqadda, kadib mid dooro oo ii soo sheeg magaciisa.</p>
+
+  <div class="bar">
+    <button class="chip" id="langSo" type="button" style="border-color:#d8b46a;color:#d8b46a">Soomaali · eleven_v4</button>
+    <button class="chip" id="langEn" type="button">English · eleven_v4</button>
+  </div>
+  <div class="bar">
+    <button class="chip" id="auto" type="button">▶ Isku xigxig dhageyso</button>
+    <button class="chip" id="stop" type="button">■ Jooji</button>
+  </div>
+  <div class="bar">
+    <input class="txt" id="phrase" value="Amal, dalabkaaga waa diyaar." maxlength="90">
+    <button class="chip" id="regen" type="button">Ku cesho eraygan</button>
+  </div>
+
+  <div id="cards"></div>
+
+  <p class="note">Haddii aad doonayso inaad ka tagto bogga: riix <b>“Door this voice”</b> kaarka aad jeceshahay, kadib ii soo celi laptop-ka oo igu dhah <b>“wad shaqada”</b>.
+  Bogga weyn ee wicitaanka: <a href="http://127.0.0.1:4173/call.html">http://127.0.0.1:4173/call.html</a> → Settings → <i>Codadka internetka</i>.</p>
+</div>
+
+<script>
+var VOICES = [
+  { file:'sarah',  label:'Sarah',  kind:'Haween · cad, kulul', id:'EXAVITQu4vr4xnSDxMaL' },
+  { file:'bella',  label:'Bella',  kind:'Haween · jilicsan',   id:'hpp4J3VqNfWAUOO0d1Us' },
+  { file:'daniel', label:'Daniel', kind:'Rag · qoto dheer',    id:'onwK4e9ZLuTAKqWW03F9' }
+];
+var PHRASES = {
+  so: 'Amal, dalabkaaga waa diyaar.',
+  en: 'Amal, your order is ready.'
+};
+var lang = 'so';
+var BASE = 'http://127.0.0.1:4173/api/tts?text=';
+var current = null;
+
+function src(v) {
+  return BASE + encodeURIComponent(document.getElementById('phrase').value.trim() || PHRASES[lang])
+              + '&voice=' + v.id + '&lang=' + lang;
+}
+function card(v) {
+  var d = document.createElement('div');
+  d.className = 'card'; d.dataset.file = v.file;
+  d.innerHTML = '<button class="play" type="button">&#9654;</button><div class="meta">'
+    + '<div class="name">' + v.label + '</div><div class="kind">' + v.kind + '</div>'
+    + '<div class="id">' + v.id + '</div></div>'
+    + '<button class="pick" type="button">Door this voice</button>';
+  d.querySelector('.play').onclick = function () { play(v, d); };
+  d.querySelector('.pick').onclick = function () { choose(d); };
+  return d;
+}
+function play(v, node) {
+  if (current) { current.audio.pause(); }
+  var a = new Audio(src(v));
+  current = { audio:a, node:node };
+  node.classList.add('on');
+  a.onended = function () { node.classList.remove('on'); current = null; };
+  a.onerror = function () { node.classList.remove('on'); current = null;
+                            alert('Codi ma jiro — server-ka baar: http://127.0.0.1:4173/api/status'); };
+  a.play();
+}
+function choose(d) {
+  var cards = document.querySelectorAll('.card');
+  for (var i = 0; i < cards.length; i++) {
+    cards[i].classList.toggle('won', cards[i] === d);
+    cards[i].querySelector('.pick').textContent = cards[i] === d ? '✓ Waa la doortay' : 'Door this voice';
+  }
+}
+function seq(i) {
+  var cards = document.querySelectorAll('.card');
+  if (i >= cards.length) return;
+  var v = VOICES[i], node = cards[i];
+  if (current) current.audio.pause();
+  var a = new Audio(src(v)); current = { audio:a, node:node };
+  node.classList.add('on');
+  a.onended = function () { node.classList.remove('on'); current = null; setTimeout(function(){ seq(i + 1); }, 450); };
+  a.onerror = function () { node.classList.remove('on'); current = null; };
+  a.play();
+}
+var host = document.getElementById('cards');
+for (var i = 0; i < VOICES.length; i++) host.appendChild(card(VOICES[i]));
+
+function setLang(next) {
+  if (current) { current.node.classList.remove('on'); current.audio.pause(); current = null; }
+  lang = next;
+  var input = document.getElementById('phrase');
+  if (!input.dataset.touched) input.value = PHRASES[lang];
+  document.getElementById('langSo').style.cssText = lang === 'so' ? 'border-color:#d8b46a;color:#d8b46a' : '';
+  document.getElementById('langEn').style.cssText = lang === 'en' ? 'border-color:#d8b46a;color:#d8b46a' : '';
+  seq(0);
+}
+document.getElementById('phrase').addEventListener('input', function () { this.dataset.touched = '1'; });
+document.getElementById('langSo').onclick = function () { setLang('so'); };
+document.getElementById('langEn').onclick = function () { setLang('en'); };
+document.getElementById('auto').onclick = function () { seq(0); };
+document.getElementById('stop').onclick = function () { if (current) { current.node.classList.remove('on'); current.audio.pause(); current = null; } };
+document.getElementById('regen').onclick = function () { if (current) current.audio.pause(); current = null; seq(0); };
+</script>
+</body>
+</html>

@@ -1,0 +1,1162 @@
+[
+ {
+  "name": "Cappuccino",
+  "category": "Hot Coffee",
+  "badge": "Bestseller",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2
+   },
+   {
+    "size": "Medium",
+    "price": 2.45
+   },
+   {
+    "size": "Large",
+    "price": 2.75
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775067399_Cappuccino.png"
+ },
+ {
+  "name": "Cinnamon Rolls",
+  "category": "pastry_kobac",
+  "badge": "Bestseller",
+  "sizes": [],
+  "price": 1.25,
+  "img": "https://pos.salool.com/uploads/img/1773489690_49.png"
+ },
+ {
+  "name": "Iced Latte",
+  "category": "Iced coffee",
+  "badge": "Bestseller",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2
+   },
+   {
+    "size": "Large",
+    "price": 3
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773744607_3.png"
+ },
+ {
+  "name": "Iced Spanish Latte",
+  "category": "Iced coffee",
+  "badge": "Bestseller",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.5
+   },
+   {
+    "size": "Large",
+    "price": 3.5
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773725714_59.png"
+ },
+ {
+  "name": "Passion Pear Smoothie",
+  "category": "Smoothies",
+  "badge": "Bestseller",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 3.5
+   },
+   {
+    "size": "Large",
+    "price": 4.5
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773727827_65.png"
+ },
+ {
+  "name": "Affogato",
+  "category": "Hot Coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.5
+   },
+   {
+    "size": "Medium",
+    "price": 2.75
+   },
+   {
+    "size": "Large",
+    "price": 3
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775068845_Affogato.png"
+ },
+ {
+  "name": "Americano",
+  "category": "Hot Coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 1.5
+   },
+   {
+    "size": "Medium",
+    "price": 1.75
+   },
+   {
+    "size": "Large",
+    "price": 2
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775067281_Americano.png"
+ },
+ {
+  "name": "Banana Bread",
+  "category": "pastry_kobac",
+  "badge": "",
+  "sizes": [],
+  "price": 2,
+  "img": "https://pos.salool.com/uploads/img/1773478299_42.png"
+ },
+ {
+  "name": "Basbusa",
+  "category": "Cakes",
+  "badge": "",
+  "sizes": [],
+  "price": 2.5,
+  "img": "https://pos.salool.com/uploads/img/1773475966_46.png"
+ },
+ {
+  "name": "Beetroot Mojito",
+  "category": "Refresher",
+  "badge": "",
+  "sizes": [],
+  "price": 3,
+  "img": "https://pos.salool.com/uploads/img/1768230961_ChatGPT%20Image%20Jan%2012%2C%202026%2C%2006_15_40%20PM.png"
+ },
+ {
+  "name": "Black Tea",
+  "category": "Hot Tea",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 1
+   },
+   {
+    "size": "Medium",
+    "price": 1.5
+   },
+   {
+    "size": "Large",
+    "price": 2
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775070081_Black%20tea.png"
+ },
+ {
+  "name": "Blueberry Frappe",
+  "category": "Frappes",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 3.45
+   },
+   {
+    "size": "Large",
+    "price": 4.45
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773736798_18.png"
+ },
+ {
+  "name": "Blueberry Refresher",
+  "category": "Refresher",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 3
+   },
+   {
+    "size": "Large",
+    "price": 4
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773741757_40.png"
+ },
+ {
+  "name": "Blueberry Strawberry",
+  "category": "Smoothies",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 3.5
+   },
+   {
+    "size": "Large",
+    "price": 4.5
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773738329_21.png"
+ },
+ {
+  "name": "Café Latte",
+  "category": "Hot Coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2
+   },
+   {
+    "size": "Medium",
+    "price": 2.45
+   },
+   {
+    "size": "Large",
+    "price": 2.75
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775066956_Cafe%20Latte.png"
+ },
+ {
+  "name": "Caffe Mocha",
+  "category": "Hot Coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.5
+   },
+   {
+    "size": "Medium",
+    "price": 2.75
+   },
+   {
+    "size": "Large",
+    "price": 3
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1772568068_9.png"
+ },
+ {
+  "name": "Camel Milk Tea",
+  "category": "Hot Tea",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2
+   },
+   {
+    "size": "Medium",
+    "price": 2.45
+   },
+   {
+    "size": "Large",
+    "price": 3
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775157580_camel%20milk%20tea.png"
+ },
+ {
+  "name": "Caramel Cappuccino",
+  "category": "Hot Coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.5
+   },
+   {
+    "size": "Medium",
+    "price": 2.75
+   },
+   {
+    "size": "Large",
+    "price": 3
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775069779_Caramel%20Cappuccino.png"
+ },
+ {
+  "name": "Caramel Latte",
+  "category": "Hot Coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.5
+   },
+   {
+    "size": "Medium",
+    "price": 2.75
+   },
+   {
+    "size": "Large",
+    "price": 3
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775068775_Caramel%20Latte.png"
+ },
+ {
+  "name": "Carrot cake",
+  "category": "Cakes",
+  "badge": "",
+  "sizes": [],
+  "price": 3.25,
+  "img": "https://pos.salool.com/uploads/img/1776949647_1757766487_Carrot%20Cake.jpg"
+ },
+ {
+  "name": "Cherry Smoothie",
+  "category": "Smoothies",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 3.5
+   },
+   {
+    "size": "Large",
+    "price": 4.5
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1768217030_ChatGPT%20Image%20Jan%2012%2C%202026%2C%2002_23_06%20PM.png"
+ },
+ {
+  "name": "Chocolate Cake",
+  "category": "Cakes",
+  "badge": "",
+  "sizes": [],
+  "price": 2.5,
+  "img": "https://pos.salool.com/uploads/img/1773477885_47.png"
+ },
+ {
+  "name": "Chocolate Chip Cookies",
+  "category": "pastry_kobac",
+  "badge": "",
+  "sizes": [],
+  "price": 1.5,
+  "img": "https://pos.salool.com/uploads/img/1773476115_40.png"
+ },
+ {
+  "name": "Coconut Matcha",
+  "category": "Matcha",
+  "badge": "",
+  "sizes": [],
+  "price": 3.7,
+  "img": "https://pos.salool.com/uploads/img/1791979796_Coconut%20matcha%2C%20layered%20in%20luxury.png"
+ },
+ {
+  "name": "Coffee Caramel Frappe",
+  "category": "Frappes",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 3.75
+   },
+   {
+    "size": "Large",
+    "price": 4.75
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773739314_24.png"
+ },
+ {
+  "name": "Cortado",
+  "category": "Hot Coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2
+   },
+   {
+    "size": "Medium",
+    "price": 2.45
+   },
+   {
+    "size": "Large",
+    "price": 2.75
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775068633_cortado.png"
+ },
+ {
+  "name": "Dasani Water",
+  "category": "Bottle Drinks",
+  "badge": "",
+  "sizes": [],
+  "price": 0.5,
+  "img": "https://pos.salool.com/uploads/img/1773738665_1.png"
+ },
+ {
+  "name": "Dawa Tea",
+  "category": "Hot Tea",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2
+   },
+   {
+    "size": "Medium",
+    "price": 2.45
+   },
+   {
+    "size": "Large",
+    "price": 2.75
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775069261_Dawo%20Tea.png"
+ },
+ {
+  "name": "Doughnut",
+  "category": "pastry_kobac",
+  "badge": "",
+  "sizes": [],
+  "price": 1.5,
+  "img": "https://pos.salool.com/uploads/img/1773478172_45.png"
+ },
+ {
+  "name": "Egg",
+  "category": "EGG EX",
+  "badge": "",
+  "sizes": [],
+  "price": 5.15,
+  "img": "https://pos.salool.com/uploads/img/1778479542_Boiled%20Egg.png"
+ },
+ {
+  "name": "Espresso",
+  "category": "Hot Coffee",
+  "badge": "",
+  "sizes": [],
+  "price": 1.5,
+  "img": "https://pos.salool.com/uploads/img/1778337639_ESPRESSO.png"
+ },
+ {
+  "name": "Green Apple",
+  "category": "Refresher",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 3
+   },
+   {
+    "size": "Medium",
+    "price": 4
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773741907_29.png"
+ },
+ {
+  "name": "Grilled Egg Toast",
+  "category": "Sandwiches",
+  "badge": "",
+  "sizes": [],
+  "price": 2.1,
+  "img": "https://pos.salool.com/uploads/img/1785821805_images%20%281%29.jpg"
+ },
+ {
+  "name": "Hot Chocolate",
+  "category": "Hot Coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2
+   },
+   {
+    "size": "Medium",
+    "price": 2.45
+   },
+   {
+    "size": "Large",
+    "price": 2.75
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775070167_Hot%20Chocolate.png"
+ },
+ {
+  "name": "Hot Matcha Latte",
+  "category": "Hot Coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.5
+   },
+   {
+    "size": "Medium",
+    "price": 2.75
+   },
+   {
+    "size": "Large",
+    "price": 3
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775069179_Matcha%20Latte.png"
+ },
+ {
+  "name": "Iced Americano",
+  "category": "Iced coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2
+   },
+   {
+    "size": "Large",
+    "price": 3
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773739651_38.png"
+ },
+ {
+  "name": "Iced Caramel Latte",
+  "category": "Iced coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.5
+   },
+   {
+    "size": "Large",
+    "price": 3.5
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773745013_5.png"
+ },
+ {
+  "name": "Iced Chia Latte",
+  "category": "Iced Tea",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.89
+   },
+   {
+    "size": "Large",
+    "price": 3.89
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/img/default.png"
+ },
+ {
+  "name": "Iced Chocolate",
+  "category": "Iced coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2
+   },
+   {
+    "size": "Large",
+    "price": 3
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773726264_60.png"
+ },
+ {
+  "name": "Iced Karkade",
+  "category": "Iced Tea",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.5
+   },
+   {
+    "size": "Large",
+    "price": 3.5
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1774869010_Cold%20Drink%20%281%29.png"
+ },
+ {
+  "name": "Iced Macchiato",
+  "category": "Iced coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2
+   },
+   {
+    "size": "Large",
+    "price": 3
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773739779_25.png"
+ },
+ {
+  "name": "Iced Matcha latte",
+  "category": "Matcha",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.5
+   },
+   {
+    "size": "Large",
+    "price": 3.5
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773726511_61.png"
+ },
+ {
+  "name": "Iced Vanilla Latte",
+  "category": "Iced coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.5
+   },
+   {
+    "size": "Large",
+    "price": 3.5
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773725997_58.png"
+ },
+ {
+  "name": "Khaliil Naxli",
+  "category": "pastry_kobac",
+  "badge": "",
+  "sizes": [],
+  "price": 0.5,
+  "img": "https://pos.salool.com/uploads/img/1783882623_KHALIYATU%20NAXL.jpg"
+ },
+ {
+  "name": "Lingzhi Coffee",
+  "category": "Hot Coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2
+   },
+   {
+    "size": "Medium",
+    "price": 2.45
+   },
+   {
+    "size": "Large",
+    "price": 2
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775068897_Lingzhi%20Coffee.png"
+ },
+ {
+  "name": "Lipton Tea",
+  "category": "Hot Tea",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 1
+   },
+   {
+    "size": "Medium",
+    "price": 1.5
+   },
+   {
+    "size": "Large",
+    "price": 2
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775070005_Lipton%20with%20tea%20bag.png"
+ },
+ {
+  "name": "Lotus Cheesecake",
+  "category": "Cakes",
+  "badge": "",
+  "sizes": [],
+  "price": 3.5,
+  "img": "https://pos.salool.com/uploads/img/1773478115_41.png"
+ },
+ {
+  "name": "Lotus Frappe",
+  "category": "Frappes",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 3.75
+   },
+   {
+    "size": "Large",
+    "price": 4.75
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773740046_27.png"
+ },
+ {
+  "name": "Macchiato",
+  "category": "Hot Coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2
+   },
+   {
+    "size": "Medium",
+    "price": 2.45
+   },
+   {
+    "size": "Large",
+    "price": 2.75
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775068713_Macchiato.png"
+ },
+ {
+  "name": "Mango Mojito",
+  "category": "Refresher",
+  "badge": "",
+  "sizes": [],
+  "price": 3,
+  "img": "https://pos.salool.com/uploads/img/1768218053_ChatGPT%20Image%20Jan%2012%2C%202026%2C%2002_40_35%20PM.png"
+ },
+ {
+  "name": "Mango Smoothie",
+  "category": "Smoothies",
+  "badge": "",
+  "sizes": [],
+  "price": 3,
+  "img": "https://pos.salool.com/uploads/img/1768218599_ChatGPT%20Image%20Jan%2012%2C%202026%2C%2012_09_04%20PM.png"
+ },
+ {
+  "name": "Masala Tea",
+  "category": "Hot Tea",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 1.5
+   },
+   {
+    "size": "Medium",
+    "price": 1.75
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775069141_Masala%20Tea.png"
+ },
+ {
+  "name": "Matcha and Strawberry",
+  "category": "Matcha",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 3.5
+   },
+   {
+    "size": "Large",
+    "price": 4.5
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773727069_66.png"
+ },
+ {
+  "name": "Matcha Frappe",
+  "category": "Matcha",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 3.45
+   },
+   {
+    "size": "Large",
+    "price": 4.5
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773738998_23.png"
+ },
+ {
+  "name": "Matcha Mango",
+  "category": "Matcha",
+  "badge": "",
+  "sizes": [],
+  "price": 3.65,
+  "img": "https://pos.salool.com/uploads/img/1791460145_WhatsApp%20Image%202026-10-08%20at%202.43.38%20PM.jpeg"
+ },
+ {
+  "name": "Matcha Vanilla",
+  "category": "Matcha",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.5
+   },
+   {
+    "size": "Large",
+    "price": 3.5
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773742283_35.png"
+ },
+ {
+  "name": "Passion Fruit Refresh",
+  "category": "Refresher",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.5
+   },
+   {
+    "size": "Large",
+    "price": 3.5
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773726660_63.png"
+ },
+ {
+  "name": "Passion Iced Tea",
+  "category": "Iced Tea",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.5
+   },
+   {
+    "size": "Large",
+    "price": 3.5
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773742599_37.png"
+ },
+ {
+  "name": "Peach Iced Tea",
+  "category": "Iced Tea",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.5
+   },
+   {
+    "size": "Large",
+    "price": 3.5
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773726756_62.png"
+ },
+ {
+  "name": "Peach Smoothie",
+  "category": "Smoothies",
+  "badge": "",
+  "sizes": [],
+  "price": 3,
+  "img": "https://pos.salool.com/uploads/img/1773727988_67.png"
+ },
+ {
+  "name": "Pistachio Matcha",
+  "category": "Matcha",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 3
+   },
+   {
+    "size": "Large",
+    "price": 4
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773742755_30.png"
+ },
+ {
+  "name": "Popcorn latte",
+  "category": "Hot",
+  "badge": "",
+  "sizes": [],
+  "price": 2.5,
+  "img": "https://pos.salool.com/uploads/img/1745048441_Popcorn%20Latte.jpg"
+ },
+ {
+  "name": "Qahwa Somali",
+  "category": "Hot Tea",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 1
+   },
+   {
+    "size": "Medium",
+    "price": 1.5
+   },
+   {
+    "size": "Large",
+    "price": 2
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775069025_Somali%20Tea.png"
+ },
+ {
+  "name": "Raspberry Iced Tea",
+  "category": "Iced Tea",
+  "badge": "",
+  "sizes": [],
+  "price": 2.5,
+  "img": "https://pos.salool.com/uploads/img/1768218969_ChatGPT%20Image%20Jan%2012%2C%202026%2C%2002_55_24%20PM.png"
+ },
+ {
+  "name": "Somali Tea",
+  "category": "Hot Tea",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 1
+   },
+   {
+    "size": "Medium",
+    "price": 1.5
+   },
+   {
+    "size": "Large",
+    "price": 2
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775069214_Somali%20Tea.png"
+ },
+ {
+  "name": "Spanish Latte",
+  "category": "Hot Coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.5
+   },
+   {
+    "size": "Medium",
+    "price": 2.75
+   },
+   {
+    "size": "Large",
+    "price": 3
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775067456_Spanish%20latte.png"
+ },
+ {
+  "name": "Sprite",
+  "category": "Bottle Drinks",
+  "badge": "",
+  "sizes": [],
+  "price": 0.5,
+  "img": "https://pos.salool.com/uploads/img/1770453777_1000.jpg"
+ },
+ {
+  "name": "Strawberry Frappe",
+  "category": "Frappes",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 3.5
+   },
+   {
+    "size": "Large",
+    "price": 4.5
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773727460_69.png"
+ },
+ {
+  "name": "Strawberry Mojito Refresher",
+  "category": "Refresher",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 3
+   },
+   {
+    "size": "Large",
+    "price": 4
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773726989_64.png"
+ },
+ {
+  "name": "Strawberry Smoothie",
+  "category": "Smoothies",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 3
+   },
+   {
+    "size": "Large",
+    "price": 4
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773740637_39.png"
+ },
+ {
+  "name": "Turkish Tea",
+  "category": "Hot Tea",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 1
+   },
+   {
+    "size": "Medium",
+    "price": 1.5
+   },
+   {
+    "size": "Large",
+    "price": 2
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775069090_Turkish%20Tea.png"
+ },
+ {
+  "name": "Vanilla Frappe",
+  "category": "Frappes",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 3.75
+   },
+   {
+    "size": "Large",
+    "price": 4.75
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773727272_68.png"
+ },
+ {
+  "name": "Vanilla Latte",
+  "category": "Hot Coffee",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 2.5
+   },
+   {
+    "size": "Medium",
+    "price": 2.89
+   },
+   {
+    "size": "Large",
+    "price": 3
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1775565074_Cafe%20Latte.png"
+ },
+ {
+  "name": "Water 300ml",
+  "category": "Bottle Drinks",
+  "badge": "",
+  "sizes": [],
+  "price": 0.25,
+  "img": "https://pos.salool.com/uploads/img/1773738398_2.png"
+ },
+ {
+  "name": "water 350ml",
+  "category": "Bottle Drinks",
+  "badge": "",
+  "sizes": [],
+  "price": 0.25,
+  "img": "https://pos.salool.com/uploads/img/1752488097_water%20350ml.jpeg"
+ },
+ {
+  "name": "White Chocolate Matcha",
+  "category": "Matcha",
+  "badge": "",
+  "sizes": [
+   {
+    "size": "Small",
+    "price": 3
+   },
+   {
+    "size": "Large",
+    "price": 4
+   }
+  ],
+  "price": null,
+  "img": "https://pos.salool.com/uploads/img/1773742879_33.png"
+ }
+]

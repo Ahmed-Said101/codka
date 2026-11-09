@@ -1,0 +1,51 @@
+# ============================================================
+#  SALOL CAFÉ — furaha codka internetka (API keys)
+#  Faylkan waa SIR. Ha dirin WhatsApp/email. Ha gelin website.
+# ============================================================
+#
+#  SIDEE LOO HELAA:
+#
+#  1) ELEVENLABS_API_KEY  (cod Soomaali ah)
+#     - tag https://elevenlabs.io  ->  "Sign up" (email, bilaash)
+#     - Fur: Profile icon -> "Developer/Personal" -> "Get API key" (Copy)
+#     - Halkan hoose ku dheji code-ka uu soo copy-gareeyay
+#
+#  2) ELEVENLABS_VOICE  (waa inaad doorataa cod Soomaali ku hadla)
+#     - Fur https://elevenlabs.io/app  ->  "Voice Library"
+#     - Search: "Somali" -> dooro cod -> riix "Add to Voice Tray" / "Add"
+#     - Kadib "Your Voices" -> codkaaga fur -> koobi "Voice ID" (waa code
+#       kooban oo xaraf/number ah oo ElevenLabs uu kuu muujiyaa)
+#     - Waxaad sidoo kale ka dooran kartaa bogga Salool:
+#       Settings -> "Codadka internetka (AI)" -> Liiska codka
+#
+#  3) OPENAI_API_KEY  (cod English ah)
+#     - tag https://platform.openai.com/api-keys  ->  "Create new secret key"
+#     - Koobi key-ka (wuxuu bilaabmaa "sk-") oo halkan ku dheji
+#     - OpenAI wuxuu u baahan yahay credit ($5 min.) — lama bilaash ah
+#
+#  4) OPENAI_VOICE  (magaca cod English — dooro midka aad jeceshahay)
+#     alloy  ash  coral  echo  fable  nova  onyx  sage  shimmer
+#
+#  4b) ELEVENLABS_EN_VOICE  (codka English haddii OPENAI_API_KEY la'yahay)
+#     Server-ka wuxuu English u isticmaalaa ElevenLabs V4 markii OpenAI key
+#     la'aan — sidaas darteed English ma aha browser TTS robot ah.
+#     Default: EXAVITQu4vr4xnSDxMaL (Sarah). Waxaad ka dooran kartaa
+#     Settings -> Codadka internetka -> "Codka Ingiriisiga".
+#
+#  5) ELEVENLABS_MODEL  (model-ka Soomaaliga — horay loogu daray V4)
+#     eleven_v4        = kan ugu fiican, 90+ luqad (Soomaali ku jirto)  <- DEFAULT
+#     eleven_v4_turbo  = kan ugu degdegga badan (~100ms), 90+ luqad
+#     eleven_multilingual_v2 = kii duugoobaay (29 luqad)
+#     Haddii cod aad dooratay V4 u shaqeyn waayo, halkan ku qor eleven_v4_turbo.
+#     Model-kan waxaa sidoo kale isticmaala English (ELEVENLABS_EN_VOICE).
+#
+#  Kadib: dami server-ka (Ctrl+C) oo dib u bilow:  npm start
+#  Bogga:  http://127.0.0.1:4173/call.html
+# ============================================================
+
+ELEVENLABS_API_KEY=
+ELEVENLABS_VOICE=
+ELEVENLABS_MODEL=eleven_v4
+ELEVENLABS_EN_VOICE=EXAVITQu4vr4xnSDxMaL
+OPENAI_API_KEY=
+OPENAI_VOICE=nova

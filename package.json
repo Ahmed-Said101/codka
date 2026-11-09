@@ -1,0 +1,13 @@
+{
+  "name": "salool-voice",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Salool counter voice: name announcements plus the Amina conversation agent.",
+  "scripts": {
+    "start": "node --env-file=.env.local voice-server.js",
+    "agent": "node --env-file=.env.local -e \"import('./agent-client.mjs').then(m => m.agentSummary()).then(s => console.log(s))\""
+  },
+  "dependencies": {
+    "@elevenlabs/elevenlabs-js": "^2.76.0"
+  }
+}

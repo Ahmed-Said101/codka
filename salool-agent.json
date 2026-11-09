@@ -1,0 +1,214 @@
+{
+  "agent_id": "agent_3301m6kk65hjedetk374nhg88rjn",
+  "name": "Salool · Codka Makhaayadda",
+  "version_id": "agtvrsn_5901m6kkc97zfsp9gfdvs8cs0fw5",
+  "conversation_config": {
+    "asr": {
+      "quality": "high",
+      "provider": "scribe_realtime",
+      "user_input_audio_format": "pcm_16000",
+      "keywords": [
+        "Salool",
+        "Kobac",
+        "Ventuna",
+        "Banadir",
+        "Zoobe",
+        "Digfeer",
+        "Waberi",
+        "2728",
+        "buna",
+        "shahaanti",
+        "Cappuccino",
+        "Iced Latte",
+        "Spanish Latte",
+        "macadamia",
+        "soomaali",
+        "muqdisho"
+      ],
+      "keyterm_libraries": []
+    },
+    "turn": {
+      "turn_timeout": 7,
+      "initial_wait_time": null,
+      "silence_end_call_timeout": -1,
+      "mode": "turn",
+      "turn_eagerness": "patient",
+      "spelling_patience": "auto",
+      "speculative_turn": true,
+      "retranscribe_on_turn_timeout": false,
+      "turn_model": "turn_v3",
+      "interruption_ignore_terms": [],
+      "interruption_ignore_term_languages": [],
+      "merge_with_default_ignore_terms": false,
+      "transcribe_on_disabled_interruptions": false,
+      "soft_timeout_config": {
+        "timeout_seconds": -1,
+        "message": "Hhmmmm...yeah.",
+        "additional_soft_timeout_messages": [],
+        "use_llm_generated_message": false,
+        "randomize_fillers": false,
+        "max_soft_timeouts_per_generation": 1,
+        "llm_generated_message_prompt_override": null,
+        "disable_until_first_user_message": false
+      },
+      "noisy_environment_detection": false,
+      "noisy_environment_message": "Uhh ... sorry, I'm picking up some noise in the background. Could you move somewhere quieter?"
+    },
+    "tts": {
+      "model_id": "eleven_v4_turbo",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "supported_voices": [],
+      "expressive_mode": true,
+      "suggested_audio_tags": [],
+      "agent_output_audio_format": "pcm_16000",
+      "optimize_streaming_latency": 3,
+      "stability": 0.45,
+      "speed": 1,
+      "similarity_boost": 0.8,
+      "clone_strength": 0,
+      "text_normalisation_type": "system_prompt",
+      "pronunciation_dictionary_locators": [],
+      "enable_phoneme_tags": true,
+      "audio_effects": null
+    },
+    "conversation": {
+      "text_only": false,
+      "max_duration_seconds": 600,
+      "max_duration_seconds_after_last_agent_message": null,
+      "client_events": [
+        "audio",
+        "interruption",
+        "agent_response",
+        "user_transcript",
+        "agent_response_correction",
+        "agent_tool_response"
+      ],
+      "file_input": {
+        "enabled": true,
+        "max_files_in_memory": 10,
+        "max_files_per_conversation": 10
+      },
+      "monitoring_enabled": false,
+      "monitoring_events": [
+        "user_transcript",
+        "agent_response",
+        "agent_response_correction"
+      ],
+      "dtmf_input_settings": null,
+      "background_sound": {
+        "source_type": null,
+        "source_id": null,
+        "volume": 0.15,
+        "crossfade_loop": true
+      },
+      "compaction": {
+        "enabled": null,
+        "soft_trigger_fraction": null,
+        "tail_size": null,
+        "min_reclaimable_tokens": null
+      },
+      "source_attribution": false
+    },
+    "language_presets": {},
+    "vad": {
+      "background_voice_detection": false
+    },
+    "realtime_model": null,
+    "agent": {
+      "first_message": "Soo dhawoow Salool! Sidee baan kuu caawin karaa? You can ask me in Soomaali or English.",
+      "language": "so",
+      "hinglish_mode": false,
+      "dynamic_variables": {
+        "dynamic_variable_placeholders": {}
+      },
+      "disable_first_message_interruptions": false,
+      "max_conversation_duration_message": "",
+      "silence_end_call_message": "",
+      "text_behavior_overrides": {
+        "whatsapp": {
+          "verbosity": null,
+          "output_format": null,
+          "interaction_budget": null,
+          "disable_max_duration": true
+        }
+      },
+      "subagent_config": {
+        "agents": [],
+        "self_subagent": null
+      },
+      "prompt": {
+        "prompt": "# Personality\nYou are Amina, the voice host of Salool cafe in Mogadishu. Warm, calm, unhurried, generous. You speak like a real person at a counter, never like a machine.\n\n# Environment\nCallers are customers at the cafe or on the phone. They ask about the menu, prices, opening hours, and branch locations. Prices come from the published Salool Kobac menu and are in US dollars.\n\n# Tone\n- Answer in the language the caller used. Default to clear, everyday Somali.\n- Keep it to one or two short sentences, then one question.\n- Say prices the way a person speaks them: \" laba dolaar iyo konton\".\n- No lists, no markdown, no filler like \"as an AI\".\n- If you do not know, say so plainly and offer the staff number.\n\n# Goal\n1. Welcome the caller and find out what they need: menu, price, hours, location, or staff help.\n2. Answer only from the knowledge base and the verified facts below.\n3. Confirm the answer landed, then offer the short number 2728 if they need a person.\n\n# Verified facts\n- Branches in Mogadishu: Kobac at KM5 Zoobe, Hodan; Banadir at Digfeer Road, Hodan; Ventuna October at 21 October Road, Waberi.\n- Hours: Saturday to Thursday 6:30 to 23:30; Friday 9:00 to 24:00.\n- Short number 2728. Email support@salool.com. Website salool.com.\n\n# Hard rules\n- This step is important. Never claim to place an order, hold a table, take payment, or add stars to an account. You give information only, then hand over to staff.\n- This step is important. Never invent star rates, redemption costs, membership tiers, founding year, or branch history. Say the information is not published and offer 2728.\n- Never state prices that are not in the knowledge base.",
+        "llm": "gpt-5.4-mini",
+        "reasoning_effort": null,
+        "service_tier": "standard",
+        "opener": null,
+        "thinking_budget": null,
+        "enable_reasoning_summary": false,
+        "temperature": 0.4,
+        "max_tokens": 220,
+        "tool_ids": [],
+        "tool_ids_strict": false,
+        "built_in_tools": {
+          "transfer_to_agent": null,
+          "update_state": null,
+          "memory_entry_search": null,
+          "run_subagent": null,
+          "flag_issue_for_review": null,
+          "end_call": null,
+          "language_detection": null,
+          "transfer_to_number": null,
+          "skip_turn": null,
+          "play_keypad_touch_tone": null,
+          "voicemail_detection": null,
+          "identity_challenge": null,
+          "ask_teammate": null,
+          "transfer_to_genesys": null,
+          "transfer_to_genesys_chat": null,
+          "transfer_to_genesys_bot": null
+        },
+        "rich_content": {
+          "enabled_components": []
+        },
+        "enable_parallel_tool_calls": true,
+        "mcp_server_ids": [],
+        "native_mcp_server_ids": [],
+        "knowledge_base": [
+          {
+            "type": "text",
+            "name": "Salool Liiska Kobac",
+            "id": "VAE022dcxobExVzOMYZI",
+            "usage_mode": "auto"
+          },
+          {
+            "type": "text",
+            "name": "Salool Laamaha Saacadaha Xiriirka",
+            "id": "yGu7ixGHH8PGy796NNp1",
+            "usage_mode": "auto"
+          }
+        ],
+        "custom_llm": null,
+        "bedrock_llm": null,
+        "speech_engine": null,
+        "ignore_default_personality": true,
+        "rag": {
+          "enabled": true,
+          "embedding_model": "e5_mistral_7b_instruct",
+          "optional_rag_enabled": false,
+          "max_vector_distance": 0.6,
+          "max_documents_length": 50000,
+          "max_retrieved_rag_chunks_count": 10,
+          "num_candidates": null,
+          "query_rewrite_prompt_override": null,
+          "knowledge_base_tool_info": null,
+          "include_source_urls": false
+        },
+        "timezone": null,
+        "backup_llm_config": {
+          "preference": "default"
+        },
+        "cascade_timeout_seconds": 4,
+        "tools": []
+      }
+    }
+  }
+}

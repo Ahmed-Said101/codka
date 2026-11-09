@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0a0806" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Salool Café · Dhawaaqa Dalabka</title>
+<link rel="icon" type="image/png" href="assets/brand/favicon-white.png" />
+<style>
+  :root {
+    --night: #0a0806;
+    --night-2: #0e0b08;
+    --panel: #17120d;
+    --panel-2: #1f1811;
+    --cream: #f7f0e2;
+    --muted: #b6a894;
+    --gold: #e7c489;
+    --gold-soft: #f3ddb2;
+    --gold-deep: #c4974f;
+    --ink: #171108;
+    --line: rgba(231, 196, 137, 0.18);
+    --line-strong: rgba(231, 196, 137, 0.34);
+    --ok: #8fd3a0;
+    --danger: #e79a8a;
+    --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-display: "Sora", "Inter", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background:
+      radial-gradient(900px 500px at 50% -10%, rgba(231, 196, 137, 0.10), transparent 62%),
+      linear-gradient(180deg, var(--night-2), var(--night) 42%);
+    color: var(--cream);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
+    padding: max(16px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom));
+  }
+
+  button, input, select { font: inherit; color: inherit; }
+  button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
+
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+
+  .app {
+    width: 100%;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 4px 2px 0;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .brand img {
+    width: 44px;
+    height: 44px;
+    filter: invert(1);
+    flex-shrink: 0;
+  }
+
+  .brand-name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+  }
+
+  .brand-sub {
+    display: block;
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .icon-btn {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(23, 18, 13, 0.7);
+    color: var(--cream);
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .icon-btn:hover { border-color: var(--line-strong); background: var(--panel-2); }
+  .icon-btn svg { width: 21px; height: 21px; }
+
+  /* ---------- Status row ---------- */
+  .status-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .sound-toggle {
+    flex: 1 1 210px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 0 16px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    color: var(--cream);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .sound-toggle[aria-pressed="true"] {
+    border-color: var(--line-strong);
+    background: linear-gradient(180deg, rgba(231, 196, 137, 0.10), var(--panel));
+  }
+
+  .sound-toggle .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--muted);
+    box-shadow: 0 0 0 4px rgba(182, 168, 148, 0.12);
+    flex-shrink: 0;
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+
+  .sound-toggle[aria-pressed="true"] .dot {
+    background: var(--ok);
+    box-shadow: 0 0 0 4px rgba(143, 211, 160, 0.14);
+  }
+
+  .sound-toggle .state {
+    margin-left: auto;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .sound-toggle[aria-pressed="true"] .state { color: var(--gold); }
+
+  .lang-switch {
+    display: flex;
+    padding: 4px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    min-height: 52px;
+  }
+
+  .lang-switch button {
+    min-width: 62px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .lang-switch button[aria-pressed="true"] {
+    background: var(--gold);
+    color: var(--ink);
+  }
+
+  /* ---------- Call card ---------- */
+  .call-card {
+    padding: 20px;
+    border-radius: 22px;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--panel-2), var(--panel));
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  }
+
+  .field-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .name-input {
+    width: 100%;
+    min-height: 62px;
+    padding: 0 18px;
+    border-radius: 14px;
+    border: 1px solid var(--line-strong);
+    background: rgba(10, 8, 6, 0.55);
+    color: var(--cream);
+    font-size: 1.25rem;
+    font-weight: 500;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .name-input::placeholder { color: #7d7162; font-size: 1rem; }
+  .name-input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 4px rgba(231, 196, 137, 0.14);
+  }
+
+  .call-btn {
+    width: 100%;
+    min-height: 62px;
+    margin-top: 12px;
+    border: 0;
+    border-radius: 14px;
+    background: linear-gradient(180deg, var(--gold-soft), var(--gold) 45%, var(--gold-deep));
+    color: var(--ink);
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: 0 14px 34px rgba(196, 151, 79, 0.24);
+    transition: transform 0.12s, filter 0.2s;
+  }
+
+  .call-btn:hover { filter: brightness(1.04); }
+  .call-btn:active { transform: translateY(1px) scale(0.995); }
+  .call-btn:disabled { opacity: 0.45; cursor: not-allowed; box-shadow: none; }
+
+  .hint {
+    margin: 12px 2px 0;
+    font-size: 0.84rem;
+    color: var(--muted);
+    min-height: 1.2em;
+  }
+
+  /* ---------- Recording chips ---------- */
+  .rec-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(10, 8, 6, 0.5);
+    color: var(--cream);
+    font-size: 0.86rem;
+    font-weight: 600;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+  }
+
+  .chip:hover { border-color: var(--line-strong); background: rgba(231, 196, 137, 0.08); }
+  .chip svg { width: 17px; height: 17px; }
+  .chip.ghost { color: var(--muted); }
+  .chip.danger:hover { color: var(--danger); border-color: rgba(231, 154, 138, 0.35); }
+  .chip.recording {
+    border-color: rgba(231, 154, 138, 0.5);
+    background: rgba(231, 154, 138, 0.12);
+    color: var(--danger);
+    animation: recpulse 1.4s ease-in-out infinite;
+  }
+
+  @keyframes recpulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(231, 154, 138, 0.25); }
+    50% { box-shadow: 0 0 0 7px rgba(231, 154, 138, 0.06); }
+  }
+
+  .tail-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  .tail-cap {
+    min-width: 74px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  .tail-state {
+    font-size: 0.78rem;
+    color: var(--ok);
+  }
+
+  .meter {
+    flex: 1 1 140px;
+    height: 10px;
+    min-width: 120px;
+    border-radius: 999px;
+    background: rgba(10, 8, 6, 0.6);
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+
+  .meter-bar {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--gold-deep), var(--gold-soft));
+    transition: width 0.08s linear;
+  }
+
+  /* ---------- Now calling ---------- */
+  .now {
+    position: relative;
+    overflow: hidden;
+    padding: 22px 20px 24px;
+    border-radius: 22px;
+    border: 1px solid var(--line-strong);
+    background:
+      radial-gradient(600px 220px at 50% 0%, rgba(231, 196, 137, 0.16), transparent 70%),
+      linear-gradient(180deg, #221a12, var(--panel));
+    text-align: center;
+  }
+
+  .now-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .now-label::before,
+  .now-label::after {
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: var(--line-strong);
+  }
+
+  .now-name {
+    margin: 6px 0 2px;
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 11vw, 4.6rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--gold-soft);
+    overflow-wrap: anywhere;
+  }
+
+  .now.is-speaking .now-name { animation: pulse 1.1s ease-in-out infinite; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.58; }
+  }
+
+  .now-foot {
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .ghost-btn {
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--cream);
+    font-size: 0.84rem;
+    font-weight: 600;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .ghost-btn:hover { border-color: var(--line-strong); background: rgba(231, 196, 137, 0.08); }
+
+  /* ---------- History ---------- */
+  .history {
+    border-radius: 22px;
+    border: 1px solid var(--line);
+    background: rgba(23, 18, 13, 0.7);
+    padding: 18px 18px 8px;
+  }
+
+  .history-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .history-head h2 {
+    margin: 0;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .text-btn {
+    border: 0;
+    background: none;
+    color: var(--danger);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  .text-btn:hover { background: rgba(231, 154, 138, 0.1); }
+
+  .call-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .call-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(231, 196, 137, 0.09);
+  }
+
+  .call-row:last-child { border-bottom: 0; }
+
+  .call-info { min-width: 0; flex: 1; }
+
+  .call-name {
+    display: block;
+    font-size: 1.02rem;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .call-meta {
+    display: block;
+    font-size: 0.76rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+  }
+
+  .row-btn {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+
+  .row-btn:hover { color: var(--gold); border-color: var(--line-strong); background: rgba(231, 196, 137, 0.07); }
+  .row-btn.danger:hover { color: var(--danger); border-color: rgba(231, 154, 138, 0.35); background: rgba(231, 154, 138, 0.08); }
+  .row-btn svg { width: 17px; height: 17px; }
+
+  .empty {
+    margin: 0;
+    padding: 22px 4px 18px;
+    text-align: center;
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Settings dialog ---------- */
+  dialog {
+    width: min(480px, calc(100vw - 32px));
+    max-height: calc(100dvh - 40px);
+    overflow: auto;
+    padding: 22px;
+    border-radius: 20px;
+    border: 1px solid var(--line-strong);
+    background: var(--panel);
+    color: var(--cream);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+  }
+
+  dialog::backdrop { background: rgba(5, 4, 3, 0.72); backdrop-filter: blur(4px); }
+
+  .dialog-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  .dialog-head h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  .setting { margin-bottom: 18px; }
+
+  .setting label,
+  .setting .setting-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .setting select {
+    width: 100%;
+    min-height: 48px;
+    padding: 0 12px;
+    border-radius: 10px;
+    border: 1px solid var(--line-strong);
+    background: var(--night-2);
+    color: var(--cream);
+    font-size: 0.92rem;
+  }
+
+  .tail-row select {
+    width: auto;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .setting input[type="range"] {
+    width: 100%;
+    accent-color: var(--gold);
+    min-height: 36px;
+  }
+
+  .phrase-input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--line-strong);
+    background: var(--night-2);
+    color: var(--cream);
+    font-size: 0.9rem;
+    line-height: 1.45;
+    resize: vertical;
+  }
+
+  .phrase-input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 4px rgba(231, 196, 137, 0.12);
+  }
+
+  .phrase-cap {
+    display: block;
+    margin: 0 0 4px;
+    font-size: 0.74rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  .phrase-input + .phrase-cap { margin-top: 12px; }
+
+  .note {
+    margin: 8px 0 0;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .note.warn { color: var(--gold-soft); }
+
+  .dialog-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 22px;
+    flex-wrap: wrap;
+  }
+
+  .solid-btn {
+    min-height: 46px;
+    padding: 0 18px;
+    border-radius: 10px;
+    border: 1px solid var(--line-strong);
+    background: rgba(231, 196, 137, 0.1);
+    color: var(--gold-soft);
+    font-weight: 700;
+    font-size: 0.88rem;
+  }
+
+  .solid-btn:hover { background: rgba(231, 196, 137, 0.16); }
+
+  .link-help {
+    margin-top: 16px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  @media (min-width: 620px) {
+    body { padding-top: 28px; }
+    .app { gap: 20px; }
+    .call-card { padding: 24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <img src="assets/brand/logo.svg" alt="" />
+        <div>
+          <span class="brand-name">Salool Café</span>
+          <span class="brand-sub">Dhawaaqa Dalabka</span>
+        </div>
+      </div>
+      <button class="icon-btn" id="settingsBtn" type="button" aria-label="Dejinta codka" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1.08-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 8.9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 8.9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V8.9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+    </header>
+
+    <div class="status-row">
+      <button class="sound-toggle" id="soundBtn" type="button" aria-pressed="true">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="sound-text">Codka</span>
+        <span class="state" id="soundState">Daaran</span>
+      </button>
+      <div class="lang-switch" role="group" aria-label="Luqadda dhawaaqa">
+        <button type="button" data-lang="so" aria-pressed="true">SO</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+
+    <main class="call-card">
+      <label class="field-label" for="nameInput">Magaca macmiilka</label>
+      <form id="callForm" autocomplete="off">
+        <input class="name-input" id="nameInput" name="name" type="text" maxlength="40"
+               placeholder="Tusaale: Ahmed" enterkeyhint="done" autocomplete="off" autocapitalize="words" spellcheck="false" />
+        <button class="call-btn" type="submit">Dhawaaq</button>
+      </form>
+      <p class="hint" id="hint">Qor magaca, ka dib riix “Dhawaaq”.</p>
+
+      <div class="rec-row">
+        <div class="meter" id="recMeter" hidden><span class="meter-bar" id="recMeterBar"></span></div>
+      </div>
+      <p class="hint" id="recHint" hidden></p>
+    </main>
+
+    <section class="now" id="nowCard" aria-live="polite" hidden>
+      <span class="now-label" id="nowLabel">Hadda la wacayo</span>
+      <div class="now-name" id="nowName"></div>
+      <div class="now-foot">
+        <button class="ghost-btn" id="repeatNow" type="button">Ku celi codka</button>
+      </div>
+    </section>
+
+    <section class="history">
+      <div class="history-head">
+        <h2>Taariikhda</h2>
+        <button class="text-btn" id="clearBtn" type="button">Nadiifi</button>
+      </div>
+      <ul class="call-list" id="callList"></ul>
+      <p class="empty" id="emptyState">Weli magac lama dhawaaqin.</p>
+    </section>
+
+    <p class="link-help">Codka ugu fiican: internet (ElevenLabs/OpenAI) markii server-ka la furo; hadduu damo, codka shaqaalaha ama browser-ka ayaa shaqeeya — offline ayaan ku filan.</p>
+  </div>
+
+  <dialog id="settingsDialog" aria-labelledby="settingsTitle">
+    <div class="dialog-head">
+      <h3 id="settingsTitle">Dejinta codka</h3>
+      <button class="icon-btn" id="closeSettings" type="button" aria-label="Xir dejinta" style="width:40px;height:40px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="setting">
+      <label for="voiceSelect">Codka la isticmaalayo</label>
+      <select id="voiceSelect"></select>
+      <p class="note" id="voiceNote"></p>
+    </div>
+
+    <div class="setting">
+      <label for="rateInput">Xawaaraha codka · <span id="rateOut">1.00×</span></label>
+      <input id="rateInput" type="range" min="0.7" max="1.3" step="0.05" value="1" />
+    </div>
+
+    <div class="setting">
+      <span class="setting-label">Ereyada dhawaaqa <span style="text-transform:none;letter-spacing:0;color:var(--muted)">({name} = magaca)</span></span>
+      <label class="phrase-cap" for="phraseSo">Soomaali</label>
+      <textarea class="phrase-input" id="phraseSo" rows="2" maxlength="200" lang="so"></textarea>
+      <label class="phrase-cap" for="phraseEn">English</label>
+      <textarea class="phrase-input" id="phraseEn" rows="2" maxlength="200" lang="en"></textarea>
+      <button class="text-btn" id="resetPhrases" type="button" style="margin-top:6px;padding-left:0">Dib u celi ereyada asalka ah</button>
+    </div>
+
+    <div class="setting">
+      <span class="setting-label">Codadka internetka (AI)</span>
+      <label for="voiceOrder">Codka la isticmaalayo</label>
+      <select id="voiceOrder">
+        <option value="cloud">Internet-ka markuu jiro (kuwa ugu fiican)</option>
+        <option value="clip">Codka shaqaalaha oo la duubay</option>
+        <option value="browser">Browser-ka qalabka oo kaliya (offline)</option>
+      </select>
+      <p class="note" id="cloudStatus">Xiriirka server-ka codka lama hubin weli.</p>
+
+      <div id="cloudRows" hidden>
+        <label class="phrase-cap" for="cloudSoVoice">Codka Soomaaliga · ElevenLabs</label>
+        <div class="tail-row">
+          <select id="cloudSoVoice" style="flex:1 1 auto;min-width:0"></select>
+          <button class="chip ghost" id="cloudRefresh" type="button">Liiska cusboonaysii</button>
+        </div>
+        <label class="phrase-cap" for="cloudSoVoiceId">Voice ID (haddii liiska aanad ka helin)</label>
+        <input class="phrase-input" id="cloudSoVoiceId" type="text" maxlength="64" spellcheck="false"
+               autocomplete="off" placeholder="ElevenLabs Voice ID" />
+
+        <label class="phrase-cap" for="cloudEnVoice">Codka Ingiriisiga · ElevenLabs / OpenAI</label>
+        <select id="cloudEnVoice"></select>
+
+        <button class="chip" id="cloudTestBtn" type="button" style="margin-top:10px">Tijaabo cod internetka</button>
+        <p class="note" id="cloudTestNote" hidden></p>
+      </div>
+    </div>
+
+    <div class="setting">
+      <span class="setting-label">Codka shaqaalaha (la duubay)</span>
+      <p class="note" id="micSupport">Erayadan hal mar ayaad duubaysaa — way ka dhabta badan yihiin codka computer-ka.</p>
+
+      <div class="tail-row">
+        <span class="tail-cap">Soomaali</span>
+        <button class="chip" id="tailSoBtn" type="button" aria-pressed="false">Duub</button>
+        <button class="chip ghost" id="tailSoPlay" type="button" hidden>Dhageyso</button>
+        <button class="chip ghost danger" id="tailSoDel" type="button" hidden>Tirtir</button>
+        <span class="tail-state" id="tailSoState"></span>
+      </div>
+
+      <div class="tail-row">
+        <span class="tail-cap">English</span>
+        <button class="chip" id="tailEnBtn" type="button" aria-pressed="false">Duub</button>
+        <button class="chip ghost" id="tailEnPlay" type="button" hidden>Dhageyso</button>
+        <button class="chip ghost danger" id="tailEnDel" type="button" hidden>Tirtir</button>
+        <span class="tail-state" id="tailEnState"></span>
+      </div>
+    </div>
+
+    <div class="dialog-actions">
+      <button class="solid-btn" id="testBtn" type="button">Tijaabo cod</button>
+      <button class="solid-btn" id="doneBtn" type="button">Xir</button>
+    </div>
+  </dialog>
+
+<script>
+(function () {
+  'use strict';
+
+  var SETTINGS_KEY = 'salool.call.settings.v2';
+  var HISTORY_KEY = 'salool.call.history.v1';
+  var MAX_HISTORY = 50;
+
+  var DEFAULT_PHRASES = {
+    so: '{name}, dalabkaaga waa diyaar.',
+    en: '{name}, your order is ready. Please collect it at the counter.'
+  };
+
+  var UI = {
+    soundBtn: document.getElementById('soundBtn'),
+    soundState: document.getElementById('soundState'),
+    langButtons: Array.prototype.slice.call(document.querySelectorAll('.lang-switch button')),
+    form: document.getElementById('callForm'),
+    nameInput: document.getElementById('nameInput'),
+    hint: document.getElementById('hint'),
+    nowCard: document.getElementById('nowCard'),
+    nowName: document.getElementById('nowName'),
+    nowLabel: document.getElementById('nowLabel'),
+    repeatNow: document.getElementById('repeatNow'),
+    list: document.getElementById('callList'),
+    empty: document.getElementById('emptyState'),
+    clearBtn: document.getElementById('clearBtn'),
+    settingsBtn: document.getElementById('settingsBtn'),
+    dialog: document.getElementById('settingsDialog'),
+    closeSettings: document.getElementById('closeSettings'),
+    doneBtn: document.getElementById('doneBtn'),
+    testBtn: document.getElementById('testBtn'),
+    voiceSelect: document.getElementById('voiceSelect'),
+    voiceNote: document.getElementById('voiceNote'),
+    rateInput: document.getElementById('rateInput'),
+    rateOut: document.getElementById('rateOut'),
+    phraseSo: document.getElementById('phraseSo'),
+    phraseEn: document.getElementById('phraseEn'),
+    resetPhrases: document.getElementById('resetPhrases'),
+    recHint: document.getElementById('recHint'),
+    recMeter: document.getElementById('recMeter'),
+    recMeterBar: document.getElementById('recMeterBar'),
+    micSupport: document.getElementById('micSupport'),
+    voiceOrder: document.getElementById('voiceOrder'),
+    cloudStatus: document.getElementById('cloudStatus'),
+    cloudRows: document.getElementById('cloudRows'),
+    cloudSoVoice: document.getElementById('cloudSoVoice'),
+    cloudSoVoiceId: document.getElementById('cloudSoVoiceId'),
+    cloudEnVoice: document.getElementById('cloudEnVoice'),
+    cloudRefresh: document.getElementById('cloudRefresh'),
+    cloudTestBtn: document.getElementById('cloudTestBtn'),
+    cloudTestNote: document.getElementById('cloudTestNote'),
+    tailSoBtn: document.getElementById('tailSoBtn'),
+    tailSoPlay: document.getElementById('tailSoPlay'),
+    tailSoDel: document.getElementById('tailSoDel'),
+    tailSoState: document.getElementById('tailSoState'),
+    tailEnBtn: document.getElementById('tailEnBtn'),
+    tailEnPlay: document.getElementById('tailEnPlay'),
+    tailEnDel: document.getElementById('tailEnDel'),
+    tailEnState: document.getElementById('tailEnState')
+  };
+
+  var state = {
+    sound: true,
+    lang: 'so',
+    voiceURI: 'auto',
+    rate: 1,
+    voiceOrder: 'cloud',
+    cloudVoices: { so: '', en: 'nova' },
+    phrases: { so: DEFAULT_PHRASES.so, en: DEFAULT_PHRASES.en }
+  };
+
+  var cloud = {
+    reachable: false,
+    elevenlabs: false,
+    somaliModel: '',
+    openai: false,
+    englishProvider: '',
+    englishVoice: '',
+    cached: 0,
+    openaiVoices: ['alloy', 'ash', 'coral', 'echo', 'fable', 'nova', 'onyx', 'sage', 'shimmer'],
+    voices: [],
+    error: ''
+  };
+
+  var history = [];
+  var voices = [];
+  var audioCtx = null;
+  var speechTimer = 0;
+  var currentUtterance = null;
+  var currentAudio = null;
+
+  var DB_NAME = 'salool-voice';
+  var STORE = 'clips';
+  var db = null;
+  var lastClipKey = null;
+  var recorder = null;
+  var recStream = null;
+  var recChunks = [];
+  var capturing = null;
+  var recTick = 0;
+  var recMax = 0;
+  var recStartAt = 0;
+  var analyser = null;
+  var analyserData = null;
+  var meterCtx = null;
+  var meterSource = null;
+  var recPeak = 0;
+  var meterActive = false;
+
+  var tailButtons = {
+    so: { record: UI.tailSoBtn, play: UI.tailSoPlay, del: UI.tailSoDel, state: UI.tailSoState },
+    en: { record: UI.tailEnBtn, play: UI.tailEnPlay, del: UI.tailEnDel, state: UI.tailEnState }
+  };
+
+  function loadSettings() {
+    try {
+      var raw = localStorage.getItem(SETTINGS_KEY);
+      if (!raw) return;
+      var saved = JSON.parse(raw);
+      if (typeof saved.sound === 'boolean') state.sound = saved.sound;
+      if (saved.lang === 'so' || saved.lang === 'en') state.lang = saved.lang;
+      if (typeof saved.voiceURI === 'string') state.voiceURI = saved.voiceURI;
+      if (typeof saved.rate === 'number' && saved.rate >= 0.7 && saved.rate <= 1.3) state.rate = saved.rate;
+      if (saved.voiceOrder === 'cloud' || saved.voiceOrder === 'clip' || saved.voiceOrder === 'browser') {
+        state.voiceOrder = saved.voiceOrder;
+      }
+      if (saved.cloudVoices) {
+        if (typeof saved.cloudVoices.so === 'string') state.cloudVoices.so = saved.cloudVoices.so.slice(0, 64);
+        if (typeof saved.cloudVoices.en === 'string' && saved.cloudVoices.en.trim()) {
+          state.cloudVoices.en = saved.cloudVoices.en.trim().slice(0, 32);
+        }
+      }
+    if (saved.phrases) {
+      if (typeof saved.phrases.so === 'string' && saved.phrases.so.trim()) state.phrases.so = saved.phrases.so.slice(0, 200);
+      if (typeof saved.phrases.en === 'string' && saved.phrases.en.trim()) state.phrases.en = saved.phrases.en.slice(0, 200);
+    }
+    } catch (err) { /* private mode or bad data: keep defaults */ }
+  }
+
+  function saveSettings() {
+    try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(state)); } catch (err) {}
+  }
+
+  function loadHistory() {
+    try {
+      var raw = localStorage.getItem(HISTORY_KEY);
+      if (!raw) return;
+      var parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) {
+        history = parsed.filter(function (item) {
+          return item && typeof item.name === 'string' && typeof item.at === 'number';
+        }).slice(0, MAX_HISTORY);
+      }
+    } catch (err) { history = []; }
+  }
+
+  function saveHistory() {
+    try { localStorage.setItem(HISTORY_KEY, JSON.stringify(history)); } catch (err) {}
+  }
+
+  /* ---------- Voice handling ---------- */
+
+  function refreshVoices() {
+    if (!('speechSynthesis' in window)) return;
+    voices = window.speechSynthesis.getVoices() || [];
+    renderVoiceOptions();
+    updateVoiceNote();
+  }
+
+  function voiceScore(voice) {
+    var name = voice.name || '';
+    var score = 0;
+    if (/natural|neural|premium|enhanced|plus|hd/i.test(name)) score += 60;
+    if (/google/i.test(name)) score += 30;
+    if (/(aria|jenny|samantha|libby|sonia|maya|ava|emma|zira)/i.test(name)) score += 15;
+    if (/(david|mark|george|guy|fred)/i.test(name)) score -= 10;
+    if (voice.localService) score += 4;
+    if (voice.default) score += 2;
+    return score;
+  }
+
+  function bestVoice(list) {
+    var best = null;
+    list.forEach(function (voice) {
+      if (!best || voiceScore(voice) > voiceScore(best)) best = voice;
+    });
+    return best;
+  }
+
+  function hasRealisticVoice() {
+    return voices.some(function (v) { return /natural|neural|premium|enhanced|google/i.test(v.name || ''); });
+  }
+
+  function findVoice(lang) {
+    if (!voices.length) return null;
+
+    if (state.voiceURI !== 'auto') {
+      for (var i = 0; i < voices.length; i++) {
+        if (voices[i].voiceURI === state.voiceURI) return voices[i];
+      }
+    }
+
+    var wanted = lang === 'so' ? 'so' : 'en';
+    var exact = voices.filter(function (v) { return v.lang && v.lang.toLowerCase().indexOf(wanted) === 0; });
+    if (exact.length) return bestVoice(exact);
+
+    return bestVoice(voices);
+  }
+
+  function renderVoiceOptions() {
+    var previous = state.voiceURI;
+    UI.voiceSelect.textContent = '';
+
+    var autoOpt = document.createElement('option');
+    autoOpt.value = 'auto';
+    autoOpt.textContent = 'Otomaatig — kii ugu fiican (talo)';
+    UI.voiceSelect.appendChild(autoOpt);
+
+    voices.slice().sort(function (a, b) { return voiceScore(b) - voiceScore(a); }).forEach(function (voice) {
+      var opt = document.createElement('option');
+      opt.value = voice.voiceURI;
+      var tag = /natural|neural|premium|enhanced|google/i.test(voice.name || '') ? ' · tayo sare' : '';
+      opt.textContent = voice.name + ' · ' + voice.lang + tag + (voice.localService ? '' : ' · online');
+      UI.voiceSelect.appendChild(opt);
+    });
+
+    var exists = Array.prototype.some.call(UI.voiceSelect.options, function (o) { return o.value === previous; });
+    UI.voiceSelect.value = exists ? previous : 'auto';
+    state.voiceURI = UI.voiceSelect.value;
+  }
+
+  function updateVoiceNote() {
+    if (!('speechSynthesis' in window)) {
+      UI.voiceNote.className = 'note warn';
+      UI.voiceNote.textContent = 'Browser-kan ma taageero codka (speech synthesis). Isticmaal Chrome ama Edge.';
+      return;
+    }
+    if (!voices.length) {
+      UI.voiceNote.className = 'note warn';
+      UI.voiceNote.textContent = 'Codadka wali lama soo shaqeeynin. Xir bogga oo dib u fur, ama riix “Tijaabo cod”.';
+      return;
+    }
+
+    var messages = [];
+    var hasSomali = voices.some(function (v) { return v.lang && v.lang.toLowerCase().indexOf('so') === 0; });
+    if (!hasRealisticVoice()) {
+      messages.push('Codka hadda la isticmaalaya waa codka hore ee Windows (ma ahan mid bini-aadam u eg). Xalka: bogga ku fur Microsoft Edge, ama Windows Settings > Time & language > Speech > Add voices. Telefoonka Android: codka Google TTS wuu ka fiican yahay.');
+    }
+    if (state.lang === 'so' && !hasSomali) {
+      messages.push('Cod Soomaali oo gaar ah ma jiro — codka Ingiriisiga ayaa akhrinaya qoraalka Soomaaliga.');
+    }
+
+    UI.voiceNote.className = messages.length ? 'note warn' : 'note';
+    UI.voiceNote.textContent = messages.length
+      ? messages.join(' ')
+      : 'Cod tayo sare ayaa la helay. Riix “Tijaabo cod” oo door kanugu roon.';
+  }
+
+  /* ---------- Recorded clips (IndexedDB) ---------- */
+
+  function openDb() {
+    if (!('indexedDB' in window)) return;
+    var request = indexedDB.open(DB_NAME, 1);
+    request.onupgradeneeded = function () {
+      if (!request.result.objectStoreNames.contains(STORE)) request.result.createObjectStore(STORE);
+    };
+    request.onsuccess = function () {
+      db = request.result;
+      refreshTails();
+    };
+    request.onerror = function () { db = null; };
+  }
+
+  function dbGet(key, cb) {
+    if (!db || !key) return cb(null);
+    try {
+      var read = db.transaction(STORE, 'readonly').objectStore(STORE).get(key);
+      read.onsuccess = function () { cb(read.result || null); };
+      read.onerror = function () { cb(null); };
+    } catch (err) { cb(null); }
+  }
+
+  function dbPut(key, blob, cb) {
+    if (!db) { if (cb) cb(false); return; }
+    try {
+      var write = db.transaction(STORE, 'readwrite').objectStore(STORE).put(blob, key);
+      write.onsuccess = function () { if (cb) cb(true); };
+      write.onerror = function () { if (cb) cb(false); };
+    } catch (err) { if (cb) cb(false); }
+  }
+
+  function dbDelete(key, cb) {
+    if (!db) { if (cb) cb(false); return; }
+    try {
+      var del = db.transaction(STORE, 'readwrite').objectStore(STORE).delete(key);
+      del.onsuccess = function () { if (cb) cb(true); };
+      del.onerror = function () { if (cb) cb(false); };
+    } catch (err) { if (cb) cb(false); }
+  }
+
+  function micBlockedReason() {
+    if (location.protocol === 'file:') {
+      return 'Waxaad bogga u furtay si “file” ah (double-click) — microfoon-ku ma shaqeynayo sidaas. Laptop-ka ku bilow node voice-server.js, ka dib ka fur http://127.0.0.1:4173/call.html';
+    }
+    if (!window.MediaRecorder || !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      return 'Browser-kan ma ogola duubista codka (MediaRecorder ma jiro). Isticmaal Chrome ama Edge.';
+    }
+    if (!window.isSecureContext) {
+      return 'Duubistu waxay u baahan tahay localhost ama https — http://IP (sida http://192.168.1.5:8000) microfoon-ka uma ogola. Ku isticmaal laptop-ka localhost, ama https ayaan ku daabacnayaa.';
+    }
+    if (!db) return 'Kaydka browser-ka (IndexedDB) ma shaqeynayo halkan — bogga dib u fur.';
+    return '';
+  }
+
+  function stopMeter() {
+    UI.recMeter.hidden = true;
+    UI.recMeterBar.style.width = '0';
+    meterActive = false;
+    if (meterSource) {
+      try { meterSource.disconnect(); } catch (err) {}
+      meterSource = null;
+    }
+    analyser = null;
+    if (meterCtx) {
+      try { meterCtx.close(); } catch (err) {}
+      meterCtx = null;
+    }
+  }
+
+  function startMeter(stream) {
+    stopMeter();
+    recPeak = 0;
+    try {
+      var Ctx = window.AudioContext || window.webkitAudioContext;
+      if (!Ctx) return;
+      meterCtx = new Ctx();
+      if (meterCtx.state === 'suspended' && meterCtx.resume) meterCtx.resume();
+      meterSource = meterCtx.createMediaStreamSource(stream);
+      analyser = meterCtx.createAnalyser();
+      analyser.fftSize = 512;
+      analyserData = new Uint8Array(analyser.fftSize);
+      meterSource.connect(analyser);
+      UI.recMeter.hidden = false;
+      sampleMeter();
+    } catch (err) {
+      UI.recMeter.hidden = true;
+    }
+  }
+
+  // Sampled from the capture interval, not requestAnimationFrame: a hidden or
+  // throttled tab stops painting frames, which would fake a silent microphone.
+  function sampleMeter() {
+    if (!analyser || !meterCtx) return;
+    analyser.getByteTimeDomainData(analyserData);
+    var peak = 0;
+    for (var i = 0; i < analyserData.length; i++) {
+      var deviation = Math.abs(analyserData[i] - 128) / 128;
+      if (deviation > peak) peak = deviation;
+    }
+    if (peak > recPeak) recPeak = peak;
+    meterActive = meterCtx.state === 'running';
+    UI.recMeterBar.style.width = Math.min(100, Math.round(peak * 240)) + '%';
+  }
+
+  function showRecHint(text) {
+    UI.recHint.textContent = text;
+    UI.recHint.hidden = !text;
+  }
+
+  function setCaptureUI() {
+    Object.keys(tailButtons).forEach(function (lang) {
+      var active = capturing === lang;
+      tailButtons[lang].record.classList.toggle('recording', active);
+      tailButtons[lang].record.setAttribute('aria-pressed', String(active));
+      tailButtons[lang].record.textContent = active ? 'Jooji' : 'Duub';
+    });
+  }
+
+  function tickCapture() {
+    sampleMeter();
+    var seconds = ((Date.now() - recStartAt) / 1000).toFixed(1);
+    showRecHint('Duubis socda: ' + seconds + 's · codkaugu sarreeya ' + Math.round(recPeak * 100) + '% — riix “Jooji”.');
+  }
+
+  function stopCapture() {
+    if (recorder && recorder.state !== 'inactive') recorder.stop();
+    else if (recorder) recorder.onstop = null;
+    window.clearInterval(recTick);
+    window.clearTimeout(recMax);
+  }
+
+  function finishCapture() {
+    var seconds = (Date.now() - recStartAt) / 1000;
+    var blob = new Blob(recChunks, { type: (recChunks[0] && recChunks[0].type) || 'audio/webm' });
+    var meterWasActive = meterActive;
+    var peak = recPeak;
+    stopMeter();
+    if (recStream) recStream.getTracks().forEach(function (track) { track.stop(); });
+    recStream = null;
+    recorder = null;
+    var target = capturing;
+    capturing = null;
+    window.clearInterval(recTick);
+    window.clearTimeout(recMax);
+    setCaptureUI();
+
+    var measure = ' · ' + seconds.toFixed(1) + 's · ' + Math.round(blob.size / 1024) + ' KB · cod ' + Math.round(peak * 100) + '%';
+
+    if (!blob.size) {
+      showRecHint('Waxba lama duubin' + measure + '. Isku day mar kale.');
+      return;
+    }
+
+    var silent = meterWasActive && peak < 0.03;
+    var lead = silent
+      ? 'DIGNIIN: microfoon-ku waxba ma gudbin. Hubi qalabka codka (Windows Settings > System > Sound) iyo ogolaanshaha browser-ka.'
+      : 'Waa la duubay.';
+
+    if (target) {
+      dbPut('tail-' + target, blob, function (ok) {
+        showRecHint(ok ? lead + measure : 'Kaydka ma suurtagelin' + measure);
+        refreshTails();
+      });
+    }
+  }
+
+  function toggleCapture(target) {
+    if (recorder) {
+      if (capturing === target) stopCapture();
+      return;
+    }
+    var blocked = micBlockedReason();
+    if (blocked) {
+      showRecHint(blocked);
+      return;
+    }
+    showRecHint('Microfoon-ka la xiriir…');
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+      capturing = target;
+      recStream = stream;
+      recChunks = [];
+      recPeak = 0;
+      recorder = new MediaRecorder(stream);
+      recorder.ondataavailable = function (event) { if (event.data && event.data.size) recChunks.push(event.data); };
+      recorder.onstop = finishCapture;
+      recorder.start();
+      recStartAt = Date.now();
+      startMeter(stream);
+      setCaptureUI();
+      tickCapture();
+      recTick = window.setInterval(tickCapture, 200);
+      recMax = window.setTimeout(stopCapture, 8000);
+    }).catch(function (error) {
+      stopMeter();
+      showRecHint('Ma shaqeynin (' + (error && error.name ? error.name : 'error') + '). Haddii aad hore u diidday: riix badhanka lock/camera URL-ka > Site settings > Microphone > Allow, ka dib bogga dib u fur.');
+      setCaptureUI();
+    });
+  }
+
+  function refreshTails() {
+    Object.keys(tailButtons).forEach(function (lang) {
+      var row = tailButtons[lang];
+      if (!db) {
+        row.play.hidden = true;
+        row.del.hidden = true;
+        row.state.textContent = '';
+        return;
+      }
+      dbGet('tail-' + lang, function (blob) {
+        row.play.hidden = !blob;
+        row.del.hidden = !blob;
+        row.state.textContent = blob ? 'la duubay' : 'wali lama duubin';
+        row.state.style.color = blob ? 'var(--ok)' : 'var(--muted)';
+      });
+    });
+  }
+
+  function chime() {
+    var Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return;
+    try {
+      if (!audioCtx) audioCtx = new Ctx();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      var now = audioCtx.currentTime;
+      [880, 1174.66].forEach(function (freq, index) {
+        var osc = audioCtx.createOscillator();
+        var gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        var start = now + index * 0.16;
+        gain.gain.setValueAtTime(0.0001, start);
+        gain.gain.exponentialRampToValueAtTime(0.16, start + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.26);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(start);
+        osc.stop(start + 0.3);
+      });
+    } catch (err) { /* audio not available */ }
+  }
+
+  function endSpeech() {
+    window.clearTimeout(speechTimer);
+    UI.nowCard.classList.remove('is-speaking');
+  }
+
+  function cancelPlayback() {
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    if (currentAudio) {
+      try { currentAudio.pause(); } catch (err) {}
+      currentAudio = null;
+    }
+    window.clearTimeout(speechTimer);
+    currentUtterance = null;
+    UI.nowCard.classList.remove('is-speaking');
+  }
+
+  function buildPhrase(lang, name) {
+    var template = (state.phrases[lang] || DEFAULT_PHRASES[lang]).trim() || DEFAULT_PHRASES[lang];
+    if (template.indexOf('{name}') === -1) template = '{name}, ' + template;
+    return template.replace(/\{name\}/g, name);
+  }
+
+  function buildTailText(lang) {
+    var template = (state.phrases[lang] || DEFAULT_PHRASES[lang]).trim() || DEFAULT_PHRASES[lang];
+    var index = template.indexOf('{name}');
+    if (index === -1) return template;
+    var tail = template.slice(index + 6).replace(/^[\s,.;:-]+/, '');
+    return tail || template.replace(/\{name\}/g, '').trim() || template;
+  }
+
+  function speak(text, lang) {
+    if (!('speechSynthesis' in window)) return;
+
+    var synth = window.speechSynthesis;
+    synth.cancel();
+    window.clearTimeout(speechTimer);
+
+    var utterance = new SpeechSynthesisUtterance(text);
+    var voice = findVoice(lang);
+    if (voice) {
+      utterance.voice = voice;
+      utterance.lang = voice.lang;
+    } else {
+      utterance.lang = lang === 'so' ? 'so-SO' : 'en-US';
+    }
+    utterance.rate = state.rate;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+    currentUtterance = utterance;
+
+    UI.nowCard.classList.add('is-speaking');
+
+    utterance.onend = endSpeech;
+    utterance.onerror = endSpeech;
+
+    // Some engines need a tick after cancel() before a new utterance works.
+    window.setTimeout(function () {
+      if (currentUtterance !== utterance) return;
+      synth.speak(utterance);
+    }, 60);
+
+    speechTimer = window.setTimeout(endSpeech, Math.max(5000, (text.length * 140) / state.rate));
+  }
+
+  /* ---------- Cloud voices (voice-server.js + ElevenLabs / OpenAI) ---------- */
+
+  function cloudVoiceId(lang) {
+    if (lang === 'so') {
+      return (UI.cloudSoVoiceId.value || '').trim() || (UI.cloudSoVoice.value || '').trim();
+    }
+    return (UI.cloudEnVoice.value || state.cloudVoices.en || '').trim();
+  }
+
+  function cloudReady(lang) {
+    if (!cloud.reachable || state.voiceOrder !== 'cloud') return false;
+    if (lang === 'so') return cloud.elevenlabs && Boolean(cloudVoiceId('so'));
+    if (cloud.openai) return true;
+    return cloud.elevenlabs && Boolean(cloudVoiceId('en') || cloud.englishVoice);
+  }
+
+  function probeCloud() {
+    if (location.protocol === 'file:') {
+      cloud.reachable = false;
+      cloud.error = 'file:// — server-ka codka ma gaari karo';
+      renderCloudStatus();
+      renderCloudControls();
+      return;
+    }
+    fetch('/api/status', { cache: 'no-store' })
+      .then(function (res) {
+        if (!res.ok) throw new Error('http ' + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        cloud.reachable = true;
+        cloud.elevenlabs = Boolean(data.elevenlabs);
+        cloud.openai = Boolean(data.openai);
+        cloud.cached = Number(data.cached || 0);
+        cloud.somaliModel = String(data.somaliModel || '');
+        cloud.englishProvider = String(data.englishProvider || '');
+        cloud.englishVoice = String(data.englishVoice || '');
+        if (Array.isArray(data.openaiVoices) && data.openaiVoices.length) {
+          cloud.openaiVoices = data.openaiVoices;
+        }
+        cloud.error = '';
+        renderCloudStatus();
+        renderCloudControls();
+        if (cloud.elevenlabs && !cloud.voices.length) loadCloudVoices();
+      })
+      .catch(function (err) {
+        cloud.reachable = false;
+        cloud.error = String(err.message || err);
+        renderCloudStatus();
+        renderCloudControls();
+      });
+  }
+
+  function loadCloudVoices() {
+    UI.cloudRefresh.disabled = true;
+    UI.cloudRefresh.textContent = 'Waa soo ruxay…';
+    fetch('/api/voices', { cache: 'no-store' })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        cloud.voices = Array.isArray(data.elevenlabs) ? data.elevenlabs : [];
+        cloud.error = data.error || '';
+        renderCloudStatus();
+        renderCloudControls();
+      })
+      .catch(function (err) {
+        cloud.error = String(err.message || err);
+        renderCloudControls();
+      })
+      .finally(function () {
+        UI.cloudRefresh.disabled = false;
+        UI.cloudRefresh.textContent = 'Liiska cusboonaysii';
+      });
+  }
+
+  function playCloud(lang, text, done) {
+    var controller = 'AbortController' in window ? new AbortController() : null;
+    var settled = false;
+    var timeout = window.setTimeout(function () {
+      if (settled) return;
+      settled = true;
+      if (controller) controller.abort();
+      done('waqtigu ka dhammaaday (20s)');
+    }, 20000);
+
+    UI.nowCard.classList.add('is-speaking');
+    var url = '/api/tts?lang=' + encodeURIComponent(lang) +
+      '&voice=' + encodeURIComponent(cloudVoiceId(lang)) +
+      '&text=' + encodeURIComponent(text);
+
+    fetch(url, controller ? { signal: controller.signal, cache: 'default' } : { cache: 'default' })
+      .then(function (res) {
+        if (!res.ok) {
+          return res.json().catch(function () { return {}; }).then(function (body) {
+            throw new Error(body.error || 'cloud ' + res.status);
+          });
+        }
+        return res.blob();
+      })
+      .then(function (blob) {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timeout);
+        if (!blob || !blob.size) { done('cod madhan ayaa soo noqday'); return; }
+        playBlob(blob, function () { done(null); });
+      })
+      .catch(function (err) {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timeout);
+        UI.nowCard.classList.remove('is-speaking');
+        done(String(err.message || err));
+      });
+  }
+
+  function renderCloudStatus() {
+    var line;
+    if (!cloud.reachable) {
+      line = 'Server-ka codka ma jiro (' + (cloud.error || 'aan la helin') + '). Ku bilow laptop-ka: node voice-server.js';
+    } else {
+      var parts = [];
+      var soLabel = cloud.somaliModel || 'ElevenLabs';
+      parts.push('Soomaali (' + soLabel + '): ' + (cloud.elevenlabs ? (cloudVoiceId('so') ? 'diyaar' : 'key jiraa, cod dooro') : 'key ma jiro'));
+      parts.push('English (' + (cloud.englishProvider || 'OpenAI') + '): ' + (cloudReady('en') ? 'diyaar' : (cloud.elevenlabs || cloud.openai) ? 'cod dooro' : 'key ma jiro'));
+      parts.push('mp3 la keydiyay: ' + cloud.cached);
+      line = parts.join(' · ');
+      if (cloud.error) line += ' · ' + cloud.error;
+    }
+    UI.cloudStatus.textContent = line;
+    UI.cloudStatus.className = cloud.reachable ? 'note' : 'note warn';
+  }
+
+  function renderCloudControls() {
+    var showCloud = state.voiceOrder === 'cloud';
+    UI.cloudRows.hidden = !showCloud;
+    if (!showCloud) return;
+
+    var enOptions = cloud.voices.filter(function (voice) { return !voice.shared; }).map(function (voice) {
+      return { value: voice.id, label: voice.name + ' · ElevenLabs' };
+    });
+    if (cloud.openai) {
+      enOptions = enOptions.concat(cloud.openaiVoices.map(function (v) {
+        return { value: v, label: v + ' · OpenAI' };
+      }));
+    }
+    enOptions.unshift({ value: '', label: cloud.openai
+      ? '— Asalka: OpenAI ' + (cloud.englishVoice || 'nova') + ' —'
+      : '— Asalka: ElevenLabs ' + (cloud.englishVoice || '') + ' —' });
+    fillSelect(UI.cloudEnVoice, enOptions, state.cloudVoices.en);
+
+    var options = [{ value: '', label: cloud.elevenlabs ? '— Dooro cod Soomaali ah —' : '— key ma jiro: buuxi salool.keys.txt —' }];
+    cloud.voices.forEach(function (voice) {
+      options.push({
+        value: voice.id,
+        label: voice.name + (voice.shared ? ' (library)' : '') +
+          (voice.languages ? ' · ' + voice.languages : '') +
+          (voice.accent ? ' · ' + voice.accent : '')
+      });
+    });
+    fillSelect(UI.cloudSoVoice, options, state.cloudVoices.so);
+    if (UI.cloudSoVoice.value !== state.cloudVoices.so) {
+      UI.cloudSoVoiceId.value = state.cloudVoices.so;
+      UI.cloudSoVoice.selectedIndex = 0;
+    } else {
+      UI.cloudSoVoiceId.value = '';
+    }
+  }
+
+  function fillSelect(select, items, selected) {
+    select.innerHTML = '';
+    items.forEach(function (item) {
+      var option = document.createElement('option');
+      option.value = item.value;
+      option.textContent = item.label;
+      select.appendChild(option);
+    });
+    if (items.some(function (item) { return item.value === selected; })) select.value = selected;
+  }
+
+  function playBlob(blob, done) {
+    var url = URL.createObjectURL(blob);
+    var audio = new Audio(url);
+    var handled = false;
+    currentAudio = audio;
+    UI.nowCard.classList.add('is-speaking');
+
+    function finish() {
+      if (handled) return;
+      handled = true;
+      URL.revokeObjectURL(url);
+      if (currentAudio === audio) currentAudio = null;
+      UI.nowCard.classList.remove('is-speaking');
+      if (done) done();
+    }
+
+    audio.onended = finish;
+    audio.onerror = finish;
+    var promise = audio.play();
+    if (promise && promise.catch) promise.catch(finish);
+  }
+
+  // Priority: cloud voice (best quality) -> staff recordings -> browser TTS.
+  // A cloud failure always falls back so the counter never goes silent.
+  function announcePlayback(name, lang, clipKey) {
+    if (state.voiceOrder === 'cloud' && cloudReady(lang)) {
+      playCloud(lang, buildPhrase(lang, name), function (error) {
+        if (!error) {
+          UI.cloudTestNote.hidden = true;
+          cloud.error = '';
+          return;
+        }
+        cloud.error = error;
+        renderCloudStatus();
+        announceLocal(name, lang, clipKey);
+      });
+      return;
+    }
+    announceLocal(name, lang, clipKey);
+  }
+
+  function announceLocal(name, lang, clipKey) {
+    if (state.voiceOrder === 'browser') {
+      speak(buildPhrase(lang, name), lang);
+      return;
+    }
+    dbGet(clipKey, function (nameClip) {
+      dbGet('tail-' + lang, function (tailClip) {
+        if (nameClip && tailClip) {
+          playBlob(nameClip, function () { playBlob(tailClip, null); });
+          return;
+        }
+        if (nameClip) {
+          playBlob(nameClip, function () { speak(buildTailText(lang), lang); });
+          return;
+        }
+        speak(buildPhrase(lang, name), lang);
+      });
+    });
+  }
+
+  /* ---------- Rendering ---------- */
+
+  function renderSound() {
+    UI.soundBtn.setAttribute('aria-pressed', String(state.sound));
+    UI.soundState.textContent = state.sound ? 'Daaran' : 'Damis';
+    if (!state.sound) {
+      UI.hint.textContent = 'Codka waa damis — magaca ayaa muuqan doona oo kaliya.';
+    } else {
+      UI.hint.textContent = 'Qor magaca, ka dib riix “Dhawaaq”.';
+    }
+  }
+
+  function renderLang() {
+    UI.langButtons.forEach(function (btn) {
+      btn.setAttribute('aria-pressed', String(btn.getAttribute('data-lang') === state.lang));
+    });
+    updateVoiceNote();
+  }
+
+  function pad(num) {
+    return num < 10 ? '0' + num : String(num);
+  }
+
+  function formatTime(timestamp) {
+    var date = new Date(timestamp);
+    var now = new Date();
+    var time = pad(date.getHours()) + ':' + pad(date.getMinutes());
+    var sameDay = date.getFullYear() === now.getFullYear() &&
+      date.getMonth() === now.getMonth() &&
+      date.getDate() === now.getDate();
+    if (sameDay) return time;
+    return pad(date.getDate()) + '/' + pad(date.getMonth() + 1) + ' · ' + time;
+  }
+
+  function renderHistory() {
+    UI.list.textContent = '';
+    UI.empty.hidden = history.length > 0;
+    UI.clearBtn.hidden = history.length === 0;
+
+    history.forEach(function (entry) {
+      var li = document.createElement('li');
+      li.className = 'call-row';
+
+      var info = document.createElement('div');
+      info.className = 'call-info';
+
+      var name = document.createElement('span');
+      name.className = 'call-name';
+      name.textContent = entry.name;
+
+      var meta = document.createElement('span');
+      meta.className = 'call-meta';
+      var voiceLabel = entry.voice === 'clip' ? ' · cod la duubay'
+        : entry.voice === 'cloud' ? ' · cod internetka' : '';
+      meta.textContent = formatTime(entry.at) + ' · ' + (entry.lang === 'en' ? 'EN' : 'SO') + voiceLabel;
+
+      info.appendChild(name);
+      info.appendChild(meta);
+
+      var repeat = document.createElement('button');
+      repeat.type = 'button';
+      repeat.className = 'row-btn';
+      repeat.setAttribute('data-action', 'repeat');
+      repeat.setAttribute('data-id', entry.id);
+      repeat.setAttribute('aria-label', 'Ku celi ' + entry.name);
+      repeat.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v3a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-3"></path><path d="M7 7l5-5 5 5"></path><path d="M12 2v13"></path></svg>';
+
+      var remove = document.createElement('button');
+      remove.type = 'button';
+      remove.className = 'row-btn danger';
+      remove.setAttribute('data-action', 'delete');
+      remove.setAttribute('data-id', entry.id);
+      remove.setAttribute('aria-label', 'Tirtir ' + entry.name);
+      remove.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v6M14 11v6"></path></svg>';
+
+      li.appendChild(info);
+      li.appendChild(repeat);
+      li.appendChild(remove);
+      UI.list.appendChild(li);
+    });
+  }
+
+  function showNow(name) {
+    UI.nowName.textContent = name;
+    UI.nowCard.hidden = false;
+  }
+
+  function renderPhrases() {
+    UI.phraseSo.value = state.phrases.so;
+    UI.phraseEn.value = state.phrases.en;
+  }
+
+  /* ---------- Actions ---------- */
+
+  function genId() {
+    return Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  }
+
+  function announce(rawName, options) {
+    options = options || {};
+    var name = (rawName || '').trim().replace(/\s+/g, ' ').slice(0, 40);
+    if (!name) {
+      UI.hint.textContent = 'Fadlan qor magaca macmiilka.';
+      UI.nameInput.focus();
+      return;
+    }
+
+    showNow(name);
+    UI.nameInput.value = '';
+
+    var clipKey = options.entryId || null;
+
+    if (options.record !== false) {
+      var entry = {
+        id: genId(),
+        name: name,
+        at: Date.now(),
+        lang: state.lang,
+        voice: state.voiceOrder === 'cloud' && cloudReady(state.lang) ? 'cloud' : 'tts'
+      };
+      clipKey = entry.id;
+
+      history.unshift(entry);
+      history = history.slice(0, MAX_HISTORY);
+      saveHistory();
+      renderHistory();
+    }
+
+    lastClipKey = clipKey;
+
+    if (state.sound) {
+      chime();
+      announcePlayback(name, state.lang, clipKey);
+    } else {
+      cancelPlayback();
+    }
+  }
+
+  /* ---------- Events ---------- */
+
+  UI.form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    announce(UI.nameInput.value);
+    UI.nameInput.focus();
+  });
+
+  UI.soundBtn.addEventListener('click', function () {
+    state.sound = !state.sound;
+    saveSettings();
+    renderSound();
+    if (!state.sound) cancelPlayback();
+  });
+
+  UI.langButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      state.lang = btn.getAttribute('data-lang');
+      saveSettings();
+      renderLang();
+      UI.hint.textContent = state.sound
+        ? 'Luqaddu hadda waa ' + (state.lang === 'so' ? 'Soomaali' : 'Ingiriisi') + '. Riix “Dhawaaq” si aad u tijaabiso.'
+        : 'Codka waa damis — magaca ayaa muuqan doona oo kaliya.';
+    });
+  });
+
+  tailButtons.so.record.addEventListener('click', function () { toggleCapture('so'); });
+  tailButtons.en.record.addEventListener('click', function () { toggleCapture('en'); });
+
+  Object.keys(tailButtons).forEach(function (lang) {
+    tailButtons[lang].play.addEventListener('click', function () {
+      dbGet('tail-' + lang, function (blob) { if (blob) playBlob(blob, null); });
+    });
+    tailButtons[lang].del.addEventListener('click', function () {
+      dbDelete('tail-' + lang, function () { refreshTails(); });
+    });
+  });
+
+  UI.repeatNow.addEventListener('click', function () {
+    var name = UI.nowName.textContent;
+    if (name) announce(name, { record: false, entryId: lastClipKey });
+  });
+
+  UI.list.addEventListener('click', function (event) {
+    var btn = event.target.closest('button[data-action]');
+    if (!btn) return;
+    var id = btn.getAttribute('data-id');
+    var entry = history.find(function (item) { return item.id === id; });
+    if (!entry) return;
+
+    if (btn.getAttribute('data-action') === 'repeat') {
+      announce(entry.name, { record: false, entryId: entry.id });
+    } else if (btn.getAttribute('data-action') === 'delete') {
+      history = history.filter(function (item) { return item.id !== id; });
+      saveHistory();
+      renderHistory();
+      dbDelete(id, function () {});
+    }
+  });
+
+  UI.clearBtn.addEventListener('click', function () {
+    if (!history.length) return;
+    if (!window.confirm('Ma rabtaa inaad tirtirto taariikhda oo dhan?')) return;
+    history.forEach(function (entry) { dbDelete(entry.id, function () {}); });
+    history = [];
+    saveHistory();
+    renderHistory();
+  });
+
+  UI.settingsBtn.addEventListener('click', function () {
+    renderCloudControls();
+    probeCloud();
+    UI.dialog.showModal();
+  });
+  UI.closeSettings.addEventListener('click', function () { UI.dialog.close(); });
+  UI.doneBtn.addEventListener('click', function () { UI.dialog.close(); });
+  UI.dialog.addEventListener('click', function (event) {
+    if (event.target === UI.dialog) UI.dialog.close();
+  });
+
+  UI.voiceSelect.addEventListener('change', function () {
+    state.voiceURI = UI.voiceSelect.value;
+    saveSettings();
+    updateVoiceNote();
+  });
+
+  UI.rateInput.addEventListener('input', function () {
+    state.rate = parseFloat(UI.rateInput.value);
+    UI.rateOut.textContent = state.rate.toFixed(2) + '×';
+    saveSettings();
+  });
+
+  UI.voiceOrder.addEventListener('change', function () {
+    state.voiceOrder = UI.voiceOrder.value;
+    saveSettings();
+    renderCloudControls();
+    renderCloudStatus();
+  });
+
+  UI.cloudSoVoice.addEventListener('change', function () {
+    state.cloudVoices.so = UI.cloudSoVoice.value;
+    UI.cloudSoVoiceId.value = '';
+    saveSettings();
+    renderCloudStatus();
+  });
+
+  UI.cloudSoVoiceId.addEventListener('input', function () {
+    var manual = UI.cloudSoVoiceId.value.trim();
+    if (manual) state.cloudVoices.so = manual.slice(0, 64);
+    saveSettings();
+    renderCloudStatus();
+  });
+
+  UI.cloudEnVoice.addEventListener('change', function () {
+    state.cloudVoices.en = UI.cloudEnVoice.value || 'nova';
+    saveSettings();
+  });
+
+  UI.cloudRefresh.addEventListener('click', loadCloudVoices);
+
+  UI.cloudTestBtn.addEventListener('click', function () {
+    var lang = state.lang;
+    UI.cloudTestNote.hidden = false;
+    UI.cloudTestNote.className = 'note';
+    UI.cloudTestNote.textContent = 'Cod internetka waa la soo saarayaa…';
+    if (!cloud.reachable) {
+      UI.cloudTestNote.className = 'note warn';
+      UI.cloudTestNote.textContent = 'Server-ka codka ma jiro — laptop-ka ku bilow: node voice-server.js';
+      return;
+    }
+    if (!cloudReady(lang)) {
+      UI.cloudTestNote.className = 'note warn';
+      UI.cloudTestNote.textContent = lang === 'so'
+        ? 'Soomaali: key ma jiro ama cod ayaa dooran. Buuxi salool.keys.txt oo dooro cod.'
+        : 'English: OpenAI key ma jiro — buuxi salool.keys.txt.';
+      return;
+    }
+    var text = buildPhrase(lang, 'Ahmed');
+    playCloud(lang, text, function (error) {
+      UI.cloudTestNote.className = error ? 'note warn' : 'note';
+      UI.cloudTestNote.textContent = error
+        ? 'Ma shaqeynin: ' + error
+        : 'Waa la maqlay: “' + text + '”';
+    });
+  });
+
+  UI.testBtn.addEventListener('click', function () {
+    state.sound = true;
+    saveSettings();
+    renderSound();
+    chime();
+    var blocked = micBlockedReason();
+    if (UI.micSupport) {
+      UI.micSupport.textContent = blocked || 'Duubista way shaqeyneysaa — riix “Duub” ee erayada.';
+      UI.micSupport.className = blocked ? 'note warn' : 'note';
+    }
+    announcePlayback(UI.nameInput.value.trim() || 'Ahmed', state.lang, 'test-clip');
+  });
+
+  function bindPhrase(input, lang) {
+    input.addEventListener('input', function () {
+      state.phrases[lang] = input.value.slice(0, 200);
+      saveSettings();
+    });
+  }
+  bindPhrase(UI.phraseSo, 'so');
+  bindPhrase(UI.phraseEn, 'en');
+
+  UI.resetPhrases.addEventListener('click', function () {
+    state.phrases = { so: DEFAULT_PHRASES.so, en: DEFAULT_PHRASES.en };
+    saveSettings();
+    renderPhrases();
+  });
+
+  /* ---------- Boot ---------- */
+
+  loadSettings();
+  loadHistory();
+  renderSound();
+  renderLang();
+  renderHistory();
+  renderPhrases();
+  openDb();
+  UI.voiceOrder.value = state.voiceOrder;
+  renderCloudControls();
+  probeCloud();
+  UI.rateInput.value = state.rate;
+  UI.rateOut.textContent = state.rate.toFixed(2) + '×';
+
+  if ('speechSynthesis' in window) {
+    refreshVoices();
+    window.speechSynthesis.addEventListener('voiceschanged', refreshVoices);
+    setTimeout(refreshVoices, 600);
+  } else {
+    updateVoiceNote();
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && UI.dialog.open) UI.dialog.close();
+  });
+})();
+</script>
+</body>
+</html>

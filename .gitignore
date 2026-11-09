@@ -1,0 +1,7 @@
+# Local secrets written by `elevenlabs onboard`
+/.env.local
+
+# Local runtime artifacts
+/node_modules/
+/voice-cache/
+/voice-server.log
